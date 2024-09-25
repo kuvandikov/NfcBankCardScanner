@@ -1,0 +1,2 @@
+-keep class com.noveogroup.android.log.** { *; }
+-keep class io.github.kuvandikov.scan_card_nfc.model.** { *; }
