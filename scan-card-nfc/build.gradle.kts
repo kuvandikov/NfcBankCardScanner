@@ -43,7 +43,7 @@ publishing {
             pom {
                 name.set("My Library")
                 description.set("This is a description of my library.")
-                url.set("https://github.com/AnvarbekKuvandikov/NfcBankCardScanner")
+                url.set("https://github.com/kuvandikov/NfcBankCardScanner")
 
                 licenses {
                     license {
@@ -59,20 +59,21 @@ publishing {
                     }
                 }
                 scm {
-//                    git@github.com:AnvarbekKuvandikov/NfcBankCardScanner.git
-                    connection.set("scm:git:git://github.com:AnvarbekKuvandikov/NfcBankCardScanner.git")
-                    developerConnection.set("scm:git:ssh://github.com:AnvarbekKuvandikov/NfcBankCardScanner.git")
-                    url.set("https://github.com/AnvarbekKuvandikov/NfcBankCardScanner.git")
+//                    git@github.com:kuvandikov/NfcBankCardScanner.git
+                    connection.set("scm:git:git://github.com:kuvandikov/NfcBankCardScanner.git")
+                    developerConnection.set("scm:git:ssh://github.com:kuvandikov/NfcBankCardScanner.git")
+                    url.set("https://github.com/kuvandikov/NfcBankCardScanner")
                 }
             }
         }
     }
     repositories {
         maven {
-            url = uri("https://oss.sonatype.org/repository/releases/")
+            name = "nexus"
+            url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
             credentials {
-                username = findProperty("sonatypeUsername") as String? ?: ""
-                password = findProperty("sonatypePassword") as String? ?: ""
+                username = findProperty("ossrhToken") as String
+                password = findProperty("ossrhTokenPassword") as String
             }
         }
     }
