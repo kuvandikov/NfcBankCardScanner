@@ -5,11 +5,11 @@ plugins {
 
 android {
     namespace = "com.kuvandikov.nfc"
-    compileSdk = 35
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.kuvandikov.nfc"
-        minSdk = 24
+        minSdk = 26
         versionCode = 1
         versionName = "1.0"
 
@@ -44,4 +44,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation(project(":scan-card-nfc"))
 }

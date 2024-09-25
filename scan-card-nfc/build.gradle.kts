@@ -7,8 +7,10 @@ plugins {
 
 android {
     namespace = "io.github.kuvandikov.scan_card_nfc"
+    compileSdk = 34
 
     defaultConfig {
+        minSdk = 26
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 }
