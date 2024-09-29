@@ -18,18 +18,18 @@ android {
 
 dependencies {
     // For NFC
-    implementation("commons-io:commons-io:2.11.0")
-    implementation("com.noveogroup.android:android-logger:1.3.5")
-    implementation("org.apache.commons:commons-collections4:4.4")
-    implementation("org.apache.commons:commons-lang3:3.9")
-    implementation("com.github.devnied:bit-lib4j:1.5.0")
-    implementation("com.google.android.gms:play-services-location:16.0.0") {
+    implementation(libs.commons.io)
+    implementation(libs.android.logger)
+    implementation(libs.commons.collections4)
+    implementation(libs.commons.lang3)
+    implementation(libs.bit.lib4j)
+    implementation(libs.play.services.location) {
         exclude("com.android.support")
     }
-    
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.espresso.core)
 }
 
 publishing {
@@ -69,8 +69,8 @@ publishing {
     }
     repositories {
         maven {
-            name = "nexus"
-            url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
+            name = "maven"
+            url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
             credentials {
                 username = findProperty("ossrhToken") as String
                 password = findProperty("ossrhTokenPassword") as String

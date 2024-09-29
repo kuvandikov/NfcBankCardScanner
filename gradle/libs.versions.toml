@@ -9,6 +9,7 @@ appcompat = "1.7.0"
 material = "1.12.0"
 activity = "1.9.2"
 constraintlayout = "2.1.4"
+vanniktechMavenPublish = "0.29.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -19,9 +20,17 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+commons-io = { group = "commons-io", name = "commons-io", version = "2.11.0" }
+android-logger = { group = "com.noveogroup.android", name = "android-logger", version = "1.3.5" }
+commons-collections4 = { group = "org.apache.commons", name = "commons-collections4", version = "4.4" }
+commons-lang3 = { group = "org.apache.commons", name = "commons-lang3", version = "3.9" }
+bit-lib4j = { group = "com.github.devnied", name = "bit-lib4j", version = "1.5.0" }
+play-services-location = { group = "com.google.android.gms", name = "play-services-location", version = "16.0.0" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version = "3.5.1" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
+vanniktech-maven-publish ={id = "com.vanniktech.maven.publish",version.ref = "vanniktechMavenPublish"}
 
