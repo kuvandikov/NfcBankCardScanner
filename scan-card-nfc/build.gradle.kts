@@ -1,8 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
-    `maven-publish`
-    signing
+    alias(libs.plugins.vanniktech.maven.publish)
 }
 
 android {
@@ -31,8 +30,20 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.espresso.core)
 }
-
 publishing {
+    repositories {
+        maven {
+            name = "myRepo"
+            url = uri(layout.buildDirectory.dir("repo"))
+            // or when a separate snapshot repository is required
+            url = uri(if (version.toString().endsWith("SNAPSHOT")) "http://my.org/repos/snapshots" else "http://my.org/repos/releases")
+        }
+
+        // more repositories can go here
+    }
+}
+
+/*publishing {
     publications {
         create<MavenPublication>("maven") {
 
@@ -82,5 +93,5 @@ publishing {
 signing {
     useGpgCmd() // This ensures the use of GPG command line
     sign(publishing.publications["maven"])
-}
+}*/
 

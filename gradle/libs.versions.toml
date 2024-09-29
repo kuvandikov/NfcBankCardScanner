@@ -32,5 +32,5 @@ espresso-core = { group = "androidx.test.espresso", name = "espresso-core", vers
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
-vanniktech-maven-publish ={id = "com.vanniktech.maven.publish",version.ref = "vanniktechMavenPublish"}
+vanniktech-maven-publish = { id = "com.vanniktech.maven.publish",version.ref = "vanniktechMavenPublish"}
 
