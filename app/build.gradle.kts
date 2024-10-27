@@ -7,6 +7,15 @@ android {
     namespace = "com.kuvandikov.nfc"
     compileSdk = 34
 
+    signingConfigs {
+        create("release") {
+            storeFile = file("../key.jks")
+            storePassword = "Anvar4660"
+            keyAlias = "kuvandikov"
+            keyPassword = "Anvar4660"
+        }
+    }
+
     defaultConfig {
         applicationId = "com.kuvandikov.nfc"
         minSdk = 26
@@ -18,6 +27,7 @@ android {
 
     buildTypes {
         release {
+            signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
