@@ -16,7 +16,7 @@ import java.io.InputStreamReader;
 import java.util.Collection;
 
 /**
- * Created by pro100svitlo on 15.05.16.
+ * Created by Kuvandikov on 15.05.16.
  */
 
 public final class AtrUtils {

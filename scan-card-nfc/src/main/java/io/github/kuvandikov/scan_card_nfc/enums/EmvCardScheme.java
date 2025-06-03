@@ -44,7 +44,8 @@ public enum EmvCardScheme {
 	ETRANZACT("eTranzact", null, "A0 00 00 04 54"), //
 	GOOGLE("Google", null, "A0 00 00 04 76 6C"), //
 	INTER_SWITCH("InterSwitch", null, "A0 00 00 03 71 00 01"),
-	HUMO("HUMO", null, "A0 86 00 01 00 00 00 01"),
+	MIR ("MIR", null, "A0 00 00 06 58 20 10","A0 00 00 06 58 10 10"), //
+	HUMO("HUMO", null, "A0 86 00 01 00 00 00 01","A0 86 00 01 00 00 01"),
 	ATTO("ATTO", null, "A0 00 00 08 11 80 01");
 
 	/**
