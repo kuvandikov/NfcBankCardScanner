@@ -1,5 +1,7 @@
 package com.kuvandikov.nfc
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.nfc.NfcAdapter
 import android.os.Bundle
 import android.util.Log
@@ -89,6 +91,14 @@ class MainActivity : AppCompatActivity(), CardNfcAsyncTask.CardNfcInterface {
 
     fun nfcDisabled() = mCardNfcUtils.disableDispatch()
 
+    @SuppressLint("MissingSuperCall")
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        if (mNfcAdapter?.isEnabled == true) {
+            nfcEnabled()
+            mCardNfcAsyncTask = CardNfcAsyncTask.Builder(this, intent, mIntentFromCreate).build()
+        }
+    }
 
     override fun startNfcReadCard() {
         viewModel.updateStatus("startNfcReadCard")
