@@ -19,7 +19,7 @@ import io.github.kuvandikov.scan_card_nfc.parser.EmvParser;
 import io.github.kuvandikov.scan_card_nfc.utils.Provider;
 
 /**
- * Created by pro100svitlo on 21.03.16.
+ * Created by Kuvandikov on 21.03.16.
  */
 public class CardNfcAsyncTask extends AsyncTask<Void, Void, Object>{
 
@@ -83,6 +83,7 @@ public class CardNfcAsyncTask extends AsyncTask<Void, Void, Object>{
     public final static String CARD_ETRANZACT = EmvCardScheme.ETRANZACT.toString();
     public final static String CARD_GOOGLE = EmvCardScheme.GOOGLE.toString();
     public final static String CARD_INTER_SWITCH = EmvCardScheme.INTER_SWITCH.toString();
+    public final static String CARD_MIR = EmvCardScheme.MIR.toString();
     public final static String CARD_HUMO = EmvCardScheme.HUMO.toString();
 
     private final static String NFC_A_TAG = "android.nfc.tech.NfcA";
@@ -96,7 +97,7 @@ public class CardNfcAsyncTask extends AsyncTask<Void, Void, Object>{
             "country, bank name, card type, etc) and i will try to do my best, \n" +
             "to add your bank as a known one into this lib. \n" +
             "Great thanks for using and reporting!!! \n" +
-            "Here is my email: pro100svitlo@gmail.com. \n\n" +
+            "Here is my email: loving.uz@gmail.com. \n\n" +
             "===========================================================================";
 
     private Provider mProvider = new Provider();

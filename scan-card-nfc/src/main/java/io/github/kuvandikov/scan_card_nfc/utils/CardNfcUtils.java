@@ -12,7 +12,7 @@ import android.nfc.tech.IsoDep;
 import android.nfc.tech.NfcA;
 
 /**
- * Created by pro100svitlo on 31.03.16.
+ * Created by Kuvandikov on 31.03.16.
  */
 public class CardNfcUtils {
 
