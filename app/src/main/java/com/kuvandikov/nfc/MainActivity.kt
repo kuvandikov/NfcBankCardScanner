@@ -82,20 +82,34 @@ class MainActivity : AppCompatActivity(), CardNfcAsyncTask.CardNfcInterface {
                 }
             }
         }
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.nfcDispatch.collect { isEnabled ->
+                    binding.nfcSwitch.isChecked = isEnabled
+                }
+            }
+        }
     }
 
     fun isNfcEnabled() = (mNfcAdapter != null && mNfcAdapter?.isEnabled == true)
 
 
-    fun nfcEnabled() = mCardNfcUtils.enableDispatch()
+    fun nfcEnabled() {
+        mCardNfcUtils.enableDispatch()
+        viewModel.updateNfcDispatch(true)
+        binding.instructionText.text = getString(R.string.tap_your_nfc_tag)
+    }
 
-    fun nfcDisabled() = mCardNfcUtils.disableDispatch()
+    fun nfcDisabled() {
+        mCardNfcUtils.disableDispatch()
+        viewModel.updateNfcDispatch(false)
+    }
 
     @SuppressLint("MissingSuperCall")
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         if (mNfcAdapter?.isEnabled == true) {
-            nfcEnabled()
             mCardNfcAsyncTask = CardNfcAsyncTask.Builder(this, intent, mIntentFromCreate).build()
         }
     }
