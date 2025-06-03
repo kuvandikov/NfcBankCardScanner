@@ -22,67 +22,6 @@ dependencies {
 }
 ```
 
-## 🚀 Usage
-Basic Setup
-1. Add NFC permissions to your AndroidManifest.xml:
-```xml
-<uses-permission android:name="android.permission.NFC" />
-<uses-feature android:name="android.hardware.nfc" android:required="true" />
-```
-2. Add NFC intent filter:
-```xml
-<intent-filter>
-    <action android:name="android.nfc.action.TECH_DISCOVERED" />
-</intent-filter>
-<meta-data
-    android:name="android.nfc.action.TECH_DISCOVERED"
-    android:resource="@xml/nfc_tech_filter" />
-```
-Implementation Example
-
-```kotlin
-class MainActivity : AppCompatActivity(), NfcCardReader.CardListener {
-
-    private lateinit var nfcCardReader: NfcCardReader
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        nfcCardReader = NfcCardReader(this)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        nfcCardReader.enableReaderMode(this)
-    }
-
-    override fun onPause() {
-        super.onPause()
-        nfcCardReader.disableReaderMode()
-    }
-
-    override fun onNewIntent(intent: Intent) {
-        super.onNewIntent(intent)
-        nfcCardReader.readCard(intent)
-    }
-
-    override fun onCardRead(card: BankCard) {
-        runOnUiThread {
-            cardNumberTextView.text = card.cardNumber
-            expiryDateTextView.text = "${card.expiryMonth}/${card.expiryYear}"
-            cardholderNameTextView.text = card.cardholderName ?: "Unknown"
-        }
-    }
-
-    override fun onError(error: String) {
-        runOnUiThread {
-            Toast.makeText(this, "Error: $error", Toast.LENGTH_SHORT).show()
-        }
-    }
-}
-```
-
 ## 💳 BankCard Model
 The library returns a BankCard object with these properties:
 ```kotlin
