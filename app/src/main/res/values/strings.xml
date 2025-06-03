@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NfcBankCardScanner</string>
+    <string name="tap_your_nfc_tag">Tap your NFC tag</string>
 </resources>
