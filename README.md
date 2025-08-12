@@ -18,7 +18,7 @@ Add this dependency to your app's `build.gradle`:
 
 ```gradle
 dependencies {
-    implementation 'io.github.kuvandikov:scan-card-nfc:0.1.1'
+    implementation 'io.github.kuvandikov:scan-card-nfc:0.1.2'
 }
 ```
 
