@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.kuvandikov.nfc"
-    compileSdk = 34
+    compileSdk = 36
 
     signingConfigs {
         create("release") {
@@ -28,7 +28,8 @@ android {
     buildTypes {
         release {
             signingConfig = signingConfigs.getByName("release")
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -63,4 +64,5 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation(project(":scan-card-nfc"))
+    //implementation(libs.scanCardNfc)
 }

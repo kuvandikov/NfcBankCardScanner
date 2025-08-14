@@ -6,11 +6,12 @@ plugins {
 
 android {
     namespace = "io.github.kuvandikov.scan_card_nfc"
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
         minSdk = 26
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
