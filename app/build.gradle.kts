@@ -63,6 +63,6 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    implementation(project(":scan-card-nfc"))
-    //implementation(libs.scanCardNfc)
+    //implementation(project(":scan-card-nfc"))
+    implementation(libs.scanCardNfc)
 }
