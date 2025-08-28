@@ -7,6 +7,7 @@ android {
     namespace = "com.kuvandikov.nfc"
     compileSdk = 36
 
+
     signingConfigs {
         create("release") {
             storeFile = file("../key.jks")
