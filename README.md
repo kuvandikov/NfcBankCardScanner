@@ -1,6 +1,6 @@
 # NFC Bank Card Scanner Library
 
-<img src="https://img.shields.io/badge/Platform-Android-brightgreen" alt="Platform"> <img src="https://img.shields.io/badge/API-21%2B-blue" alt="API"> <img src="https://img.shields.io/badge/License-MIT-yellow" alt="License">
+<img src="https://img.shields.io/badge/Platform-Android-brightgreen" alt="Platform"> <img src="https://img.shields.io/badge/API-21%2B-blue" alt="API"> [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 An Android library for reading bank card information via NFC technology.
 
