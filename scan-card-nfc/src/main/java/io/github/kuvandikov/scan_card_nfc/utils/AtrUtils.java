@@ -97,7 +97,7 @@ public final class AtrUtils {
         if (StringUtils.isNotBlank(pAts)) {
             String val = StringUtils.deleteWhitespace(pAts);
             for (String key : MAP.keySet()) {
-                if (key.contains(val)) { // TODO Fix this
+                if (val.matches("^" + key + "$")) { // Regex pattern orqali tekshirish
                     ret = (Collection<String>) MAP.get(key);
                     break;
                 }
