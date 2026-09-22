@@ -1,12 +1,11 @@
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.vanniktech.maven.publish)
 }
 
 android {
     namespace = "io.github.kuvandikov.scan_card_nfc"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         minSdk = 26
@@ -16,9 +15,6 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
     }
 }
 
