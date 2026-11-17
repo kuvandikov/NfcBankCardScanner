@@ -19,7 +19,7 @@ public class IosCardProvider(private val tag: NFCISO7816TagProtocol) : CardProvi
 
     override suspend fun transceive(command: ByteArray): ByteArray = suspendCancellableCoroutine { cont ->
         val apdu = command.toNfcApdu()
-        tag.sendCommandWithAPDU(apdu) { data, sw1, sw2, error ->
+        tag.sendCommandAPDU(apdu) { data, sw1, sw2, error ->
             if (error != null) {
                 cont.resumeWithException(CardConnectionLostException(IllegalStateException(error.localizedDescription)))
             } else {

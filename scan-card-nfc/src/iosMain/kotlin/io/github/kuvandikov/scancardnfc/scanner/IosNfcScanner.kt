@@ -125,10 +125,8 @@ private class TagReaderDelegate(
             }
         }
     }
-
-    private companion object {
-        // NFCReaderError codes (CoreNFC/NFCError.h)
-        const val ERROR_USER_CANCELED = 200L
-        const val ERROR_SESSION_TIMEOUT = 201L
-    }
 }
+
+// NFCReaderError codes (CoreNFC/NFCError.h). Top-level because a companion of an ObjC subclass cannot hold fields.
+private const val ERROR_USER_CANCELED = 200L
+private const val ERROR_SESSION_TIMEOUT = 201L
