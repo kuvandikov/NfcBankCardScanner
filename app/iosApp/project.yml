@@ -15,8 +15,6 @@ targets:
     platform: iOS
     sources:
       - iosApp
-    # Generates a shared "iosApp" scheme, so Xcode, xcodebuild and Android Studio can pick the app.
-    scheme: {}
     # Info.plist and the entitlements are hand-written (NFC keys, AID list) and referenced via
     # INFOPLIST_FILE / CODE_SIGN_ENTITLEMENTS below. Do not add `info:` / `entitlements:` here:
     # XcodeGen would regenerate those files and drop the NFC configuration.
@@ -34,3 +32,13 @@ targets:
         script: |
           cd "$SRCROOT/../.."
           ./gradlew :app:shared:embedAndSignAppleFrameworkForXcode
+# Shared scheme, so Xcode, xcodebuild and Android Studio can pick the app after a fresh clone.
+schemes:
+  app.iosApp:
+    build:
+      targets:
+        iosApp: all
+    run:
+      config: Debug
+    archive:
+      config: Release
