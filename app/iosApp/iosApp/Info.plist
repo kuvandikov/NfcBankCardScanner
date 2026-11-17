@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>$(DEVELOPMENT_LANGUAGE)</string>
+    <key>CFBundleDisplayName</key>
+    <string>NFC Card Reader</string>
+    <key>CFBundleExecutable</key>
+    <string>$(EXECUTABLE_NAME)</string>
+    <key>CFBundleIdentifier</key>
+    <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+    <key>CFBundleName</key>
+    <string>$(PRODUCT_NAME)</string>
+    <key>CFBundlePackageType</key>
+    <string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
+    <key>CFBundleShortVersionString</key>
+    <string>0.1.0</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>UILaunchScreen</key>
+    <dict/>
+    <key>CADisableMinimumFrameDurationOnPhone</key>
+    <true/>
+
+    <!-- NFC -->
+    <key>NFCReaderUsageDescription</key>
+    <string>The app reads the card number and expiry date from your contactless bank card.</string>
+    <key>com.apple.developer.nfc.readersession.iso7816.select-identifiers</key>
+    <array>
+        <!-- PPSE: 2PAY.SYS.DDF01 -->
+        <string>325041592E5359532E4444463031</string>
+        <string>A0000000031010</string>  <!-- Visa -->
+        <string>A0000000032010</string>  <!-- Visa Electron -->
+        <string>A0000000041010</string>  <!-- Mastercard -->
+        <string>A0000000043060</string>  <!-- Maestro -->
+        <string>A0000006581010</string>  <!-- Mir -->
+        <string>A0000003330101</string>  <!-- UnionPay -->
+        <string>A00000002501</string>    <!-- American Express -->
+        <string>A0000000651010</string>  <!-- JCB -->
+        <string>A0000001523010</string>  <!-- Discover -->
+        <!-- TODO: add Uzcard / Humo AIDs once captured from real cards -->
+    </array>
+</dict>
+</plist>

@@ -1,32 +1,30 @@
-# How to become a contributor and submit your own code
+# Contributing
 
-## Contributor License Agreements
+Thanks for helping! Issues and pull requests are welcome.
 
-We'd love to accept your sample apps and patches! Before we can take them, we
-have to jump a couple of legal hurdles.
+## Development setup
 
-Please fill out either the individual or corporate Contributor License Agreement
-(CLA).
+- JDK 21
+- Android Studio (latest) with the Kotlin Multiplatform plugin
+- macOS + Xcode for iOS targets, and [XcodeGen](https://github.com/yonaskolb/XcodeGen) for the sample app
 
-  * If you are an individual writing source code and you're sure you
-    own the intellectual property, then you'll need to sign an [individual CLA](https://developers.google.com/open-source/cla/individual).
-  * If you work for a company that wants to allow you to contribute your work,
-    then you'll need to sign a [corporate CLA](https://developers.google.com/open-source/cla/corporate).
+## Before opening a PR
 
-Follow either of the two links above to access the appropriate CLA and
-instructions for how to sign and return it. Once we receive it, we'll be able to
-accept your pull requests.
+```bash
+./gradlew :scan-card-nfc:jvmTest :scan-card-nfc:assemble
+```
 
-## Contributing A Patch
+- Public API changes must keep explicit visibility and return types (strict API mode is on).
+- Add a `commonTest` case for every parser change. Use `FakeCardProvider` and the `tlv()` helper.
+- **Never commit real card data.** Test PANs must be synthetic (e.g. `4111111111111111`) or fully masked.
+  When you capture APDU logs from a real card, replace PAN, name, Track 2 and cryptograms before sharing.
 
-1. Submit an issue describing your proposed change to the repo in question.
-1. The repo owner will respond to your issue promptly.
-1. If your proposed change is accepted, and you haven't already done so, sign a
-   Contributor License Agreement (see details above).
-1. Fork the desired repo, develop, and test your code changes.
-1. Ensure that your code adheres to the existing style in the sample to which
-   you are contributing. Refer to the
-   [Google Cloud Platform Samples Style Guide](https://github.com/GoogleCloudPlatform/Template/wiki/style.html) for the
-   Recommended coding standards for this organization.
-1. Ensure that your code has an appropriate set of unit tests that all pass.
-1. Submit a pull request.
+## Adding a card scheme
+
+1. Add an entry to `EmvCardScheme` with RID prefixes and a BIN regex.
+2. Add its full AID to `EmvCardScheme.knownAids` and to the iOS `select-identifiers` in the sample `Info.plist`.
+3. Cover it in `EmvCardSchemeTest`.
+
+## Code style
+
+Kotlin official code style (`kotlin.code.style=official`), settings in `.editorconfig`.
