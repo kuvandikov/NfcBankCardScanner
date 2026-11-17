@@ -42,3 +42,8 @@ kotlin {
 
     jvmToolchain(21)
 }
+
+dependencies {
+    // Renders the commonMain @Preview functions in Android Studio.
+    "androidRuntimeClasspath"(libs.compose.ui.tooling)
+}

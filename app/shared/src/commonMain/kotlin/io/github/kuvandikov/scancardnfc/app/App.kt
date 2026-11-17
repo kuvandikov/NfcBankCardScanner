@@ -28,12 +28,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import io.github.kuvandikov.scancardnfc.NfcCardScanner
+import io.github.kuvandikov.scancardnfc.model.CardExpiry
 import io.github.kuvandikov.scancardnfc.model.EmvCard
+import io.github.kuvandikov.scancardnfc.model.EmvCardScheme
 import io.github.kuvandikov.scancardnfc.model.NfcScanResult
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.awaitCancellation
 import kotlinx.coroutines.launch
 
 private val Background = Color(0xFF0F1115)
@@ -156,5 +160,44 @@ private fun ActionButton(text: String, enabled: Boolean, onClick: () -> Unit) {
         contentAlignment = Alignment.Center,
     ) {
         BasicText(text, style = TextStyle(TextPrimary, 17.sp, FontWeight.SemiBold))
+    }
+}
+
+/** Scanner stub for previews: never reads a card. */
+private class PreviewScanner(override val isSupported: Boolean) : NfcCardScanner {
+    override val isEnabled: Boolean = isSupported
+    override suspend fun scan(): NfcScanResult = awaitCancellation()
+}
+
+private val PreviewCard = EmvCard(
+    pan = "4111111111111111",
+    expiry = CardExpiry(month = 8, year = 2029),
+    scheme = EmvCardScheme.VISA,
+    holderName = "JOHN DOE",
+    aid = "A0000000031010",
+    applicationLabel = "VISA DEBIT",
+)
+
+@Preview
+@Composable
+private fun AppPreview() {
+    App(PreviewScanner(isSupported = true))
+}
+
+@Preview
+@Composable
+private fun AppNfcNotSupportedPreview() {
+    App(PreviewScanner(isSupported = false))
+}
+
+@Preview
+@Composable
+private fun ResultViewPreview() {
+    Column(
+        Modifier.background(Background).padding(24.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+    ) {
+        ResultView(NfcScanResult.Success(PreviewCard))
+        ResultView(NfcScanResult.CardMovedTooFast)
     }
 }
