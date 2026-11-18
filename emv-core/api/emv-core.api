@@ -1,0 +1,174 @@
+public final class io/github/kuvandikov/scancardnfc/EmvReader {
+	public fun <init> (Lio/github/kuvandikov/scancardnfc/provider/CardProvider;Lio/github/kuvandikov/scancardnfc/EmvReaderConfig;)V
+	public synthetic fun <init> (Lio/github/kuvandikov/scancardnfc/provider/CardProvider;Lio/github/kuvandikov/scancardnfc/EmvReaderConfig;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun read (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class io/github/kuvandikov/scancardnfc/EmvReaderConfig {
+	public fun <init> ()V
+	public fun <init> (IIIII)V
+	public synthetic fun <init> (IIIIIILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun component2 ()I
+	public final fun component3 ()I
+	public final fun component4 ()I
+	public final fun component5 ()I
+	public final fun copy (IIIII)Lio/github/kuvandikov/scancardnfc/EmvReaderConfig;
+	public static synthetic fun copy$default (Lio/github/kuvandikov/scancardnfc/EmvReaderConfig;IIIIIILjava/lang/Object;)Lio/github/kuvandikov/scancardnfc/EmvReaderConfig;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMaxFallbackRecords ()I
+	public final fun getMaxFallbackSfi ()I
+	public final fun getTerminalCountryCode ()I
+	public final fun getTransactionCurrencyCode ()I
+	public final fun getTransceiveTimeoutMillis ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class io/github/kuvandikov/scancardnfc/NfcCardScanner {
+	public abstract fun isEnabled ()Z
+	public abstract fun isSupported ()Z
+	public abstract fun scan (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class io/github/kuvandikov/scancardnfc/model/CardExpiry {
+	public fun <init> (II)V
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMonth ()I
+	public final fun getYear ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/kuvandikov/scancardnfc/model/EmvCard {
+	public fun <init> (Ljava/lang/String;Lio/github/kuvandikov/scancardnfc/model/CardExpiry;Lio/github/kuvandikov/scancardnfc/model/EmvCardScheme;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Lio/github/kuvandikov/scancardnfc/model/CardExpiry;Lio/github/kuvandikov/scancardnfc/model/EmvCardScheme;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAid ()Ljava/lang/String;
+	public final fun getApplicationLabel ()Ljava/lang/String;
+	public final fun getExpiry ()Lio/github/kuvandikov/scancardnfc/model/CardExpiry;
+	public final fun getFormattedPan ()Ljava/lang/String;
+	public final fun getHolderName ()Ljava/lang/String;
+	public final fun getMaskedPan ()Ljava/lang/String;
+	public final fun getPan ()Ljava/lang/String;
+	public final fun getScheme ()Lio/github/kuvandikov/scancardnfc/model/EmvCardScheme;
+	public fun hashCode ()I
+	public final fun isPanValid ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/kuvandikov/scancardnfc/model/EmvCardScheme : java/lang/Enum {
+	public static final field AMERICAN_EXPRESS Lio/github/kuvandikov/scancardnfc/model/EmvCardScheme;
+	public static final field Companion Lio/github/kuvandikov/scancardnfc/model/EmvCardScheme$Companion;
+	public static final field DISCOVER Lio/github/kuvandikov/scancardnfc/model/EmvCardScheme;
+	public static final field HUMO Lio/github/kuvandikov/scancardnfc/model/EmvCardScheme;
+	public static final field JCB Lio/github/kuvandikov/scancardnfc/model/EmvCardScheme;
+	public static final field MAESTRO Lio/github/kuvandikov/scancardnfc/model/EmvCardScheme;
+	public static final field MASTERCARD Lio/github/kuvandikov/scancardnfc/model/EmvCardScheme;
+	public static final field MIR Lio/github/kuvandikov/scancardnfc/model/EmvCardScheme;
+	public static final field UNIONPAY Lio/github/kuvandikov/scancardnfc/model/EmvCardScheme;
+	public static final field UNKNOWN Lio/github/kuvandikov/scancardnfc/model/EmvCardScheme;
+	public static final field UZCARD Lio/github/kuvandikov/scancardnfc/model/EmvCardScheme;
+	public static final field VISA Lio/github/kuvandikov/scancardnfc/model/EmvCardScheme;
+	public final fun getDisplayName ()Ljava/lang/String;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/kuvandikov/scancardnfc/model/EmvCardScheme;
+	public static fun values ()[Lio/github/kuvandikov/scancardnfc/model/EmvCardScheme;
+}
+
+public final class io/github/kuvandikov/scancardnfc/model/EmvCardScheme$Companion {
+	public final fun detect (Ljava/lang/String;Ljava/lang/String;)Lio/github/kuvandikov/scancardnfc/model/EmvCardScheme;
+	public final fun fromAid (Ljava/lang/String;)Lio/github/kuvandikov/scancardnfc/model/EmvCardScheme;
+}
+
+public final class io/github/kuvandikov/scancardnfc/model/NfcErrorType : java/lang/Enum {
+	public static final field CARD_DATA_NOT_FOUND Lio/github/kuvandikov/scancardnfc/model/NfcErrorType;
+	public static final field COMMAND_FAILED Lio/github/kuvandikov/scancardnfc/model/NfcErrorType;
+	public static final field NO_PAYMENT_APPLICATION Lio/github/kuvandikov/scancardnfc/model/NfcErrorType;
+	public static final field PARSING_FAILED Lio/github/kuvandikov/scancardnfc/model/NfcErrorType;
+	public static final field UNKNOWN Lio/github/kuvandikov/scancardnfc/model/NfcErrorType;
+	public static final field UNSUPPORTED_TAG Lio/github/kuvandikov/scancardnfc/model/NfcErrorType;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/kuvandikov/scancardnfc/model/NfcErrorType;
+	public static fun values ()[Lio/github/kuvandikov/scancardnfc/model/NfcErrorType;
+}
+
+public abstract interface class io/github/kuvandikov/scancardnfc/model/NfcScanResult {
+}
+
+public final class io/github/kuvandikov/scancardnfc/model/NfcScanResult$Cancelled : io/github/kuvandikov/scancardnfc/model/NfcScanResult {
+	public static final field INSTANCE Lio/github/kuvandikov/scancardnfc/model/NfcScanResult$Cancelled;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/kuvandikov/scancardnfc/model/NfcScanResult$CardBlocked : io/github/kuvandikov/scancardnfc/model/NfcScanResult {
+	public static final field INSTANCE Lio/github/kuvandikov/scancardnfc/model/NfcScanResult$CardBlocked;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/kuvandikov/scancardnfc/model/NfcScanResult$CardMovedTooFast : io/github/kuvandikov/scancardnfc/model/NfcScanResult {
+	public static final field INSTANCE Lio/github/kuvandikov/scancardnfc/model/NfcScanResult$CardMovedTooFast;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/kuvandikov/scancardnfc/model/NfcScanResult$Error : io/github/kuvandikov/scancardnfc/model/NfcScanResult {
+	public fun <init> (Lio/github/kuvandikov/scancardnfc/model/NfcErrorType;Ljava/lang/String;)V
+	public synthetic fun <init> (Lio/github/kuvandikov/scancardnfc/model/NfcErrorType;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lio/github/kuvandikov/scancardnfc/model/NfcErrorType;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Lio/github/kuvandikov/scancardnfc/model/NfcErrorType;Ljava/lang/String;)Lio/github/kuvandikov/scancardnfc/model/NfcScanResult$Error;
+	public static synthetic fun copy$default (Lio/github/kuvandikov/scancardnfc/model/NfcScanResult$Error;Lio/github/kuvandikov/scancardnfc/model/NfcErrorType;Ljava/lang/String;ILjava/lang/Object;)Lio/github/kuvandikov/scancardnfc/model/NfcScanResult$Error;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMessage ()Ljava/lang/String;
+	public final fun getType ()Lio/github/kuvandikov/scancardnfc/model/NfcErrorType;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/kuvandikov/scancardnfc/model/NfcScanResult$NfcDisabled : io/github/kuvandikov/scancardnfc/model/NfcScanResult {
+	public static final field INSTANCE Lio/github/kuvandikov/scancardnfc/model/NfcScanResult$NfcDisabled;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/kuvandikov/scancardnfc/model/NfcScanResult$NfcNotSupported : io/github/kuvandikov/scancardnfc/model/NfcScanResult {
+	public static final field INSTANCE Lio/github/kuvandikov/scancardnfc/model/NfcScanResult$NfcNotSupported;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/kuvandikov/scancardnfc/model/NfcScanResult$Success : io/github/kuvandikov/scancardnfc/model/NfcScanResult {
+	public fun <init> (Lio/github/kuvandikov/scancardnfc/model/EmvCard;)V
+	public final fun component1 ()Lio/github/kuvandikov/scancardnfc/model/EmvCard;
+	public final fun copy (Lio/github/kuvandikov/scancardnfc/model/EmvCard;)Lio/github/kuvandikov/scancardnfc/model/NfcScanResult$Success;
+	public static synthetic fun copy$default (Lio/github/kuvandikov/scancardnfc/model/NfcScanResult$Success;Lio/github/kuvandikov/scancardnfc/model/EmvCard;ILjava/lang/Object;)Lio/github/kuvandikov/scancardnfc/model/NfcScanResult$Success;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCard ()Lio/github/kuvandikov/scancardnfc/model/EmvCard;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/kuvandikov/scancardnfc/provider/CardConnectionLostException : java/lang/Exception {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+
+public abstract interface class io/github/kuvandikov/scancardnfc/provider/CardProvider {
+	public abstract fun transceive ([BLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class io/github/kuvandikov/scancardnfc/util/ByteArrayExtensionsKt {
+	public static final fun hexToBytes (Ljava/lang/String;)[B
+	public static final fun toHex ([BLjava/lang/String;)Ljava/lang/String;
+	public static synthetic fun toHex$default ([BLjava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
+}
+

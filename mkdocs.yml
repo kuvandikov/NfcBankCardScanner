@@ -1,0 +1,48 @@
+# Project information
+site_name: 'scan-card-nfc'
+site_description: 'Read the card number and expiry date of contactless bank cards on Android.'
+site_author: 'Kuvandikov'
+site_url: 'https://kuvandikov.github.io/scan-card-nfc/'
+edit_uri: 'tree/main/docs/'
+remote_branch: gh-pages
+
+docs_dir: docs-gen
+
+# Repository
+repo_name: 'scan-card-nfc'
+repo_url: 'https://github.com/kuvandikov/NfcBankCardScanner'
+
+# Navigation
+nav:
+  - 'Overview': index.md
+  - 'Usage': usage.md
+  - 'API': api/
+  - 'Migration from 0.1.x': migration.md
+  - 'Decisions':
+    - '0001 Android-only': decisions/0001-android-only.md
+  - 'Contributing': contributing.md
+  - 'Security': security.md
+  - 'Changelog': changelog.md
+
+# Configuration
+theme:
+  name: 'material'
+  language: 'en'
+  palette:
+    primary: 'black'
+    accent: 'deep purple'
+  font:
+    text: 'Roboto'
+    code: 'JetBrains Mono'
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - attr_list
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
