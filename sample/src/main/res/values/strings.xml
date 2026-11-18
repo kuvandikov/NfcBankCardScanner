@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2026 Kuvandikov and the scan-card-nfc contributors
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <string name="app_name">NFC Card Scanner</string>
+
+    <string name="add_card_title">Add card</string>
+    <string name="add_card_subtitle">Hold your card against the back of the phone. The card number and expiry date are filled in automatically.</string>
+    <string name="card_number">Card number</string>
+    <string name="card_expiry">Expiry date</string>
+    <string name="card_scheme">Payment system</string>
+
+    <string name="action_scan">Scan with NFC</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_add_card">Add card</string>
+    <string name="action_open_nfc_settings">Open NFC settings</string>
+
+    <string name="status_waiting">Hold the card against the phone and keep it still…</string>
+    <string name="status_success">Card read</string>
+    <string name="status_card_moved">The card was removed too early. Keep it still until reading finishes.</string>
+    <string name="status_card_blocked">The card is blocked. Please contact your bank.</string>
+    <string name="status_nfc_disabled">NFC is turned off. Turn it on in settings.</string>
+    <string name="status_nfc_not_supported">This device has no NFC. Enter the card details manually.</string>
+    <string name="status_unsupported_tag">This is not a bank card.</string>
+    <string name="status_error">Could not read the card. Please try again.</string>
+    <string name="status_card_added">Card added (demo: no data was sent anywhere).</string>
+</resources>

@@ -1,40 +1,36 @@
+/*
+ * Copyright 2026 Kuvandikov and the scan-card-nfc contributors
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.jetbrains.kotlin.android)
-    alias(libs.plugins.vanniktech.maven.publish)
+    alias(libs.plugins.scancardnfc.android.library)
+    alias(libs.plugins.scancardnfc.library.published)
 }
 
 android {
-    namespace = "io.github.kuvandikov.scan_card_nfc"
-    compileSdk = 36
-
-    defaultConfig {
-        minSdk = 26
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
+    namespace = "io.github.kuvandikov.scancardnfc"
 }
 
-
 dependencies {
-    // For NFC
-    implementation(libs.commons.io)
-    implementation(libs.android.logger)
-    implementation(libs.commons.collections4)
-    implementation(libs.commons.lang3)
-    implementation(libs.bit.lib4j)
-    implementation(libs.play.services.location) {
-        exclude("com.android.support")
-    }
+    api(projects.emvCore)
+    // ComponentActivity is part of the public API (AndroidNfcScanner constructor).
+    api(libs.androidx.activity)
 
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.espresso.core)
+    implementation(libs.androidx.lifecycle.runtime)
+    implementation(libs.kotlinx.coroutines.android)
+
+    testImplementation(projects.internalTestutils)
+    testImplementation(libs.kotlinx.coroutines.test)
 }

@@ -1,32 +1,44 @@
-# How to become a contributor and submit your own code
+# Contributing
 
-## Contributor License Agreements
+Issues and pull requests are welcome.
 
-We'd love to accept your sample apps and patches! Before we can take them, we
-have to jump a couple of legal hurdles.
+## Setup
 
-Please fill out either the individual or corporate Contributor License Agreement
-(CLA).
+- JDK 17+
+- Android Studio (latest stable)
+- An NFC phone and real cards for manual testing (`sample` app)
 
-  * If you are an individual writing source code and you're sure you
-    own the intellectual property, then you'll need to sign an [individual CLA](https://developers.google.com/open-source/cla/individual).
-  * If you work for a company that wants to allow you to contribute your work,
-    then you'll need to sign a [corporate CLA](https://developers.google.com/open-source/cla/corporate).
+## Before opening a pull request
 
-Follow either of the two links above to access the appropriate CLA and
-instructions for how to sign and return it. Once we receive it, we'll be able to
-accept your pull requests.
+```bash
+./gradlew spotlessApply                          # ktlint + license headers
+./gradlew spotlessCheck apiCheck test lint
+```
 
-## Contributing A Patch
+- **Public API.** Published modules use strict explicit API mode. If you change the public API on purpose,
+  run `./gradlew apiDump` and commit the updated `api/*.api` file; reviewers look at that diff first.
+- **Tests.** Every parser change needs a JVM test in `emv-core/src/test`. Build card responses with the
+  `tlv()` helper and `FakeCardProvider` from `internal-testutils`.
+- **No Android in `emv-core`.** It is a plain Kotlin/JVM module on purpose.
 
-1. Submit an issue describing your proposed change to the repo in question.
-1. The repo owner will respond to your issue promptly.
-1. If your proposed change is accepted, and you haven't already done so, sign a
-   Contributor License Agreement (see details above).
-1. Fork the desired repo, develop, and test your code changes.
-1. Ensure that your code adheres to the existing style in the sample to which
-   you are contributing. Refer to the
-   [Google Cloud Platform Samples Style Guide](https://github.com/GoogleCloudPlatform/Template/wiki/style.html) for the
-   Recommended coding standards for this organization.
-1. Ensure that your code has an appropriate set of unit tests that all pass.
-1. Submit a pull request.
+## Card data rules
+
+**Never commit real card data.** That includes PANs, names, Track 2 data and cryptograms in tests, fixtures,
+issues, logs and screenshots.
+
+When you add a fixture from a real card log:
+
+1. Replace the PAN with a synthetic one of the same BIN (keep the first 4–6 digits, change the rest, fix Luhn
+   if needed).
+2. Replace the cardholder name, Track 2 discretionary data and every cryptogram (`9F26`, `9F4B`, …).
+3. Add it to `internal-testutils/.../CardFixtures.kt` with a comment describing the card profile.
+
+## Adding a card scheme
+
+1. Add an entry to `EmvCardScheme` (RID prefixes + BIN regex).
+2. Add the full AID to `EmvCardScheme.knownAids`.
+3. Cover it in `EmvCardSchemeTest` and, if possible, add a fixture flow test.
+
+## Code style
+
+ktlint via Spotless with the settings in `.editorconfig` (same as nowinandroid).
