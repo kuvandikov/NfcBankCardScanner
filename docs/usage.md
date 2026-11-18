@@ -19,6 +19,9 @@ class AddCardActivity : ComponentActivity() {
 
 ## Compose
 
+Add only `io.github.kuvandikov:scan-card-nfc-compose:1.0.0`; it exposes `scan-card-nfc` transitively.
+`rememberNfcCardScanner()` must run inside a `ComponentActivity`.
+
 ```kotlin
 @Composable
 fun AddCard(viewModel: AddCardViewModel = viewModel()) {
