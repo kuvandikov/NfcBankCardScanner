@@ -6,7 +6,7 @@ are first-class, alongside Visa, Mastercard, Mir and UnionPay.
 
 The library does not make payments. It reads only the public data that every card exposes over NFC.
 
-> **Status:** `1.0.0-SNAPSHOT`. The EMV engine is covered by JVM unit tests. Device testing with real
+> **Status:** `1.0.0`. The EMV engine is covered by JVM unit tests. Device testing with real
 > Humo/Uzcard cards is the next milestone — see the [roadmap](docs/PLAN.md).
 
 ## Download
@@ -17,15 +17,27 @@ Pick **one** artifact, depending on your UI toolkit:
 dependencies {
     // Jetpack Compose app: this alone is enough.
     // It brings scan-card-nfc and scan-card-nfc-emv-core transitively.
-    implementation("io.github.kuvandikov:scan-card-nfc-compose:<version>")
+    implementation("io.github.kuvandikov:scan-card-nfc-compose:1.0.0")
 
     // Views / Activity / Fragment app (no Compose):
-    implementation("io.github.kuvandikov:scan-card-nfc:<version>")
+    implementation("io.github.kuvandikov:scan-card-nfc:1.0.0")
 }
 ```
 
 `minSdk` 23. The library declares the `NFC` permission and an optional `android.hardware.nfc` feature in its
 own manifest, so you do not need to add anything to `AndroidManifest.xml`.
+
+### Versions
+
+| Version | API |
+|---|---|
+| `1.0.0` | The Kotlin API described in this README |
+| `0.1.4` | Old Java API (`CardNfcAsyncTask`), only `scan-card-nfc`, no Compose artifact. See the [migration guide](docs/migration.md). |
+
+Between releases `VERSION_NAME` in [`gradle.properties`](gradle.properties) ends with `-SNAPSHOT`
+(e.g. `1.0.1-SNAPSHOT`): that is unreleased code on `main`, never uploaded to Maven Central. To try it, run
+`./gradlew publishToMavenLocal` (JDK 17 or 21; Dokka fails on JDK 25) and add `mavenLocal()` to your
+repositories.
 
 ## Usage
 
@@ -146,6 +158,21 @@ See [ADR 0001](docs/decisions/0001-android-only.md).
 The build follows [android/nowinandroid](https://github.com/android/nowinandroid) (`build-logic`
 convention plugins, version catalog, Spotless) and [google/accompanist](https://github.com/google/accompanist)
 (published-library plugin, API dumps, mkdocs + Dokka site).
+
+## Releasing
+
+For maintainers. `-SNAPSHOT` must never be released.
+
+1. In `gradle.properties` remove `-SNAPSHOT` (e.g. `VERSION_NAME=1.0.1`) and put the same version in the
+   README and `docs/usage.md`.
+2. Move the `[Unreleased]` section of [CHANGELOG.md](CHANGELOG.md) under `[<version>] — <date>`.
+3. Commit, then tag and push: `git tag v1.0.1 && git push origin v1.0.1`.
+   [`release.yml`](.github/workflows/release.yml) checks the build, publishes all artifacts to Maven Central
+   and deploys the docs.
+4. Start the next cycle: `VERSION_NAME=1.0.2-SNAPSHOT` (or `1.1.0-SNAPSHOT`) and commit.
+
+Versions follow [Semantic Versioning](https://semver.org/): patch for fixes, minor for new API, major for
+breaking changes.
 
 ## Contributing
 
