@@ -21,6 +21,15 @@ plugins {
 android {
     namespace = "io.github.kuvandikov.scancardnfc.sample"
 
+    signingConfigs {
+        create("release") {
+            storeFile = file("../key.jks")
+            storePassword = "Anvar4660"
+            keyAlias = "kuvandikov"
+            keyPassword = "Anvar4660"
+        }
+    }
+
     defaultConfig {
         applicationId = "io.github.kuvandikov.scancardnfc.sample"
         versionCode = 1
@@ -29,7 +38,13 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            signingConfig = signingConfigs.getByName("release")
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 }
